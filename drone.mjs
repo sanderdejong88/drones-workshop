@@ -18,7 +18,7 @@ const drone = (address, port) => {
 
   const setWifi = async (ssid, password) => {
     await sendCommand("command");
-    return sendCommand(`wifi ${ssid} ${password}`);
+    return sendCommand(`ap ${ssid} ${password}`);
   };
 
   const sendCommand = (command) => {

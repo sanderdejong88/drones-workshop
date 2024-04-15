@@ -7,14 +7,14 @@ const execute = async (...commands) => {
   }
 };
 
-const drone1 = drone("192.168.8.120", 8889);
+const drone1 = drone("192.168.8.118", 8889);
 drone1.connect();
 
 execute(
   drone1.command.takeoff(),
   //   drone1.command.speed(75),
   //   drone1.command.go(0, 0, 60, 50, 2),
-  //   drone1.command.forward(300),
+  drone1.command.forward(200),
   //   drone1.command.align(),
   //   drone1.command.go(0, 0, 150, 50, 7),
   //   drone1.command.right(180),
@@ -23,4 +23,6 @@ execute(
   //   drone1.command.align(),
   //   drone1.command.align(),
   drone1.command.land()
-).then(drone1.disconnect);
+)
+  .catch((error) => console.log(error))
+  .finally(drone1.disconnect);
