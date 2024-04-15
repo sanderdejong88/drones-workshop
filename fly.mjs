@@ -7,7 +7,7 @@ const execute = async (...commands) => {
   }
 };
 
-const drone1 = drone("192.168.8.118", 8889);
+const drone1 = drone("192.168.8.109", 8889);
 drone1.connect();
 
 execute(
@@ -15,6 +15,9 @@ execute(
   //   drone1.command.speed(75),
   //   drone1.command.go(0, 0, 60, 50, 2),
   drone1.command.forward(200),
+  drone1.command.right(200),
+  drone1.command.backward(200),
+  drone1.command.left(200),
   //   drone1.command.align(),
   //   drone1.command.go(0, 0, 150, 50, 7),
   //   drone1.command.right(180),

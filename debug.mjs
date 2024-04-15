@@ -1,22 +1,22 @@
-import dgram from 'node:dgram';
+import dgram from "node:dgram";
 
 const debug = () => {
-    const server = dgram.createSocket('udp4');
-    server.bind(8890)
+  const server = dgram.createSocket("udp4");
+  server.bind(8890);
 
-    server.on("message", (msg) => {
-        const telemetrics = msg
-            .toString()
-            .trim()
-            .split(";")
-            .reduce((acc, cur) => {
-                const [key, val] = cur.split(":");
-                return { ...acc, [key]: val };
-            }, {});
-        console.log(telemetrics);
-        // console.log(msg.toString().trim());
-        // console.log(msg.toString());
-    });
-}
+  server.on("message", (msg) => {
+    const telemetrics = msg
+      .toString()
+      .trim()
+      .split(";")
+      .reduce((acc, cur) => {
+        const [key, val] = cur.split(":");
+        return { ...acc, [key]: val };
+      }, {});
+    // console.log(telemetrics);
+    // console.log(msg.toString().trim());
+    console.log(msg.toString());
+  });
+};
 
-export default debug;
+debug();
